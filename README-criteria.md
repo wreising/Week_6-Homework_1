@@ -1,4 +1,4 @@
-# Unit 11 Express Homework: Note Taker
+# Week 6 Homework 1: Note Taker
 
 ## Description
 
