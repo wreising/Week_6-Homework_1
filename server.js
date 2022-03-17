@@ -1,19 +1,22 @@
 const express = require('express')
 let notes = require('./db/db.json')
 const path = require('path')
-const fs = require('fs')
-const { uid } = require('uid')
+const fs = require('fs') // do I need this?
+const { uid } = require('uid') // deconstructed?
 
 const app = express()
 
+// boiler plate
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+// access to index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
+// access to notes.html
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'notes.html'))
 })
