@@ -31,8 +31,6 @@ app.get('/api/notes', (req, res) => {
 
 // post new notes
 app.post('/api/notes', (req, res) => {
-  // console.log(req.rawHeaders)
-  // console.log(req.method)
   if (req.body.title.length < 1) {
     return res.json({})
   } else {
@@ -41,6 +39,7 @@ app.post('/api/notes', (req, res) => {
     }
     readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
       if (err) { console.log(err) }
+      req.body.id = uid()
       const notes = JSON.parse(data)
       notes.push(req.body)
       writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
@@ -55,7 +54,7 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
   readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
     if (err) { console.log(err) }
-    // notes = notes.filter(note => note.id !== req.param.id)
+    notes = notes.filter(note => note.id !== req.param.id)
     writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
       if (err) { console.log(err) }
       res.json(req.body)

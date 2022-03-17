@@ -1,5 +1,5 @@
-// const express = require('express')
-// const { uid } = require('uid')
+const express = require('express')
+const { uid } = require('uid')
 
 const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
