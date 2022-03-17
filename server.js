@@ -50,17 +50,26 @@ app.post('/api/notes', (req, res) => {
   }
 })
 
+// app.delete('/api/notes/:id', (req, res) => {
+//   readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
+//     if (err) { console.log(err) }
+//     notes = notes.filter(note => note.id !== req.param.id)
+//     console.log(notes)
+//     writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
+//       if (err) { console.log(err) }
+//       res.json(req.body)
+//     })
+//   })
+// })
+
 // delete a note
 app.delete('/api/notes/:id', (req, res) => {
-  readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
+  notes = notes.filter(note => note.id !== req.params.id)
+  writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
     if (err) { console.log(err) }
-    notes = notes.filter(note => note.id !== req.param.id)
-    writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
-      if (err) { console.log(err) }
-      res.json(req.body)
-    })
   })
-  // res.json(notes)
+  res.json(notes)
+  console.log(notes)
 })
 
 // listen on port 3000
