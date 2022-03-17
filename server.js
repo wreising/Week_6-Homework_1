@@ -21,12 +21,14 @@ app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'notes.html'))
 })
 
+// get the notes
 app.get('/api/notes', (req, res) => {
   res.json(notes)
 })
 
+// post a new note
 app.post('/api/notes', (req, res) => {
-  let newNote = {
+  let newNote = { // from index.js
     title: req.body.title,
     text: req.body.text,
     id: uid()
@@ -35,10 +37,11 @@ app.post('/api/notes', (req, res) => {
   res.json(200)
 })
 
+// delete a note
 app.delete('/api/notes/:id', (req, res) => {
   notes = notes.filter(note => note.id !== req.params.id)
   res.json(notes)
 })
 
-
+// listen on port 3000
 app.listen(process.env.PORT || 3000)
