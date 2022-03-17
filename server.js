@@ -55,7 +55,7 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
   readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
     if (err) { console.log(err) }
-    notes = notes.filter(note => note.id !== req.param.id)
+    // notes = notes.filter(note => note.id !== req.param.id)
     writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
       if (err) { console.log(err) }
       res.json(req.body)
