@@ -2,11 +2,21 @@
 
 ### By: [Bill Reising](#questions)
 
+# View Screencast - as of 2022-03-17 Heroku deployment is not working
+
 ---
 
 ## App Description
 
-A command line utility to create a html based note taking application that is interactive.
+A command line utility to create a web based note taking application that is interactive.
+
+---
+
+**[Screencast](href=)
+
+---
+
+[screenshot](href=)
 
 ---
 
@@ -27,11 +37,15 @@ Copy the folder to a server running Node and ???.
 
 ## Command to use:
 
-<code>node ???.js</code>
+<code>nodemon server.js</code>
 
 ## Instructions:
 
-run `node ???.js` and answer the questions.
+run `nodemon server.js` and navigate to localhost:3000
+
+or
+
+visit - https://bootcamp-note-taker-01.herokuapp.com/
 
 ## Contribution Guidlines
 
