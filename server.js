@@ -1,5 +1,5 @@
 const express = require('express')
-let notes = require('./db/db.json')
+// let notes = require('./db/db.json')
 const { join } = require('path')
 const { writeFile, readFile } = require('fs')
 const { v4: uuidv4 } = require('uuid')
@@ -28,7 +28,7 @@ app.get('/api/notes', (req, res) => {
   readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
     if (err) { console.log(err) }
     res.json(JSON.parse(data))
-    console.log('first get', notes)
+    // console.log('first get', notes)
   })
 })
 
@@ -59,14 +59,15 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
   readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
     if (err) { console.log(err) }
+    // console.log('before delete', notes)
+    let notes = JSON.parse(data)
+    notes = notes.filter(note => note.id !== req.params.id)
+    writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
+      if (err) { console.log(err) }
+      res.json(notes)
+    })
+    // console.log('after delete', notes)
   })
-  console.log('before delete', notes)
-  notes = notes.filter(note => note.id !== req.params.id)
-  writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
-    if (err) { console.log(err) }
-  })
-  res.json(notes)
-  console.log('after delete', notes)
 })
 
 // listen on port 3000
