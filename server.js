@@ -1,8 +1,9 @@
 const express = require('express')
 let notes = require('./db/db.json')
 const { join } = require('path')
-const { writeFile, readFile } = require('fs') // do I need this?
-const { uid } = require('uid') // deconstructed?
+const { writeFile, readFile } = require('fs')
+// const { uid } = require('uid')
+const { v4: uuidv4 } = require('uuid')
 
 const app = express()
 
@@ -39,7 +40,7 @@ app.post('/api/notes', (req, res) => {
     }
     readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
       if (err) { console.log(err) }
-      req.body.id = uid()
+      req.body.id = uuidv4()
       const notes = JSON.parse(data)
       notes.push(req.body)
       writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
