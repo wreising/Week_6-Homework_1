@@ -15,10 +15,12 @@ A command line utility to create a web based note taking application that is int
 **[Screencast](https://drive.google.com/file/d/1Ocn1TSM-fmQjHnd2AcLuf57ZUH3AHvea/view)**
 
 ---
-- Localhost:
+- On Localhost:
+
 ![screenshot](./public/assets/screenshot-localhost.png)
 
-- Heroku
+- On Heroku:
+
 ![screenshot](./public/assets/screenshot-heroku.png)
 
 ---
