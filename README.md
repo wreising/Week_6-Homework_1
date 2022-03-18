@@ -2,8 +2,6 @@
 
 ### By: [Bill Reising](#questions)
 
-# View [Screencast](https://drive.google.com/file/d/1Ocn1TSM-fmQjHnd2AcLuf57ZUH3AHvea/view)<br>- as of 2022-03-17 Heroku deployment is not working properly
-
 ---
 
 ## App Description
