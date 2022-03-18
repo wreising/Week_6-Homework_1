@@ -2,7 +2,7 @@ const express = require('express')
 let notes = require('./db/db.json')
 const { join } = require('path')
 const { writeFile, readFile } = require('fs') // do I need this?
-const { uid } = require('uid') // deconstructed?
+const { uid } = require('uuid') // deconstructed?
 
 const app = express()
 
