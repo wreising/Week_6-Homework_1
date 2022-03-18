@@ -27,6 +27,7 @@ app.get('/api/notes', (req, res) => {
   readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
     if (err) { console.log(err) }
     res.json(JSON.parse(data))
+    console.log('first get', notes)
   })
 })
 
@@ -43,10 +44,11 @@ app.post('/api/notes', (req, res) => {
       req.body.id = uuidv4()
       const notes = JSON.parse(data)
       notes.push(req.body)
+      console.log('after push', notes)
       writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
         if (err) { console.log(err) }
         res.json(req.body)
-        console.log(notes)
+        console.log('after write', notes)
       })
     })
   }
@@ -54,13 +56,16 @@ app.post('/api/notes', (req, res) => {
 
 // delete a note
 app.delete('/api/notes/:id', (req, res) => {
-  console.log(notes)
+  readFile(join(__dirname, 'db', 'db.json'), 'utf8', (err, data) => {
+    if (err) { console.log(err) }
+  })
+  console.log('before delete', notes)
   notes = notes.filter(note => note.id !== req.params.id)
   writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
     if (err) { console.log(err) }
   })
   res.json(notes)
-  console.log(notes)
+  console.log('after delete', notes)
 })
 
 // listen on port 3000
