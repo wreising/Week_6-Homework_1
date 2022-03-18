@@ -41,7 +41,7 @@ Copy the folder to a server running Node and ???.
 
 ## Instructions:
 
-run `nodemon server.js` and navigate to localhost:3000
+Run `npm i` and then `nodemon server.js`. Then navigate to localhost:3000
 
 or
 

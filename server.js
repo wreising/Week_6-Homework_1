@@ -43,9 +43,11 @@ app.post('/api/notes', (req, res) => {
       req.body.id = uuidv4()
       const notes = JSON.parse(data)
       notes.push(req.body)
+      console.log(notes)
       writeFile(join(__dirname, 'db', 'db.json'), JSON.stringify(notes), err => {
         if (err) { console.log(err) }
         res.json(req.body)
+        console.log(notes)
       })
     })
   }
