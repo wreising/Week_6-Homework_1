@@ -2,7 +2,6 @@ const express = require('express')
 let notes = require('./db/db.json')
 const { join } = require('path')
 const { writeFile, readFile } = require('fs')
-// const { uid } = require('uid')
 const { v4: uuidv4 } = require('uuid')
 
 const app = express()
@@ -21,6 +20,8 @@ app.get('/', (req, res) => {
 app.get('/notes', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'notes.html'))
 })
+
+// app.use(require('./public/routes/routes.js'))
 
 // get the notes from the DB
 app.get('/api/notes', (req, res) => {
